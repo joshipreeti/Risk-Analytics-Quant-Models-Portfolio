@@ -1,4 +1,4 @@
-**Volatility Modeling**: ARCH vs GARCH on Nifty (Bank of Baroda)
+**Volatility Modeling**: ARCH vs GARCH on Nifty Bank (Bank of Baroda)
 This is a side-by-side comparison of ARCH and GARCH models to understand volatility clustering in stock market returns.
 **What this project is about**: How volatility evolves over time,How well these models capture real-world behaviour
 Differences between ARCH and GARCH in practice
@@ -8,4 +8,4 @@ Built ARCH and GARCH models,Compared model outputs and interpretations
 but can become unstable,GARCH models provide a more stable and realistic representation of volatility
 Model assumptions matter a lot when interpreting results.
 **Libraries Used** : Python,pandas, numpy,matplotlib / seaborn,statsmodels / arch
-**Feedback** : If you have any suggestions, please feel to share with me.
+**Feedback** : If you have any suggestions, please feel free to share with me.
