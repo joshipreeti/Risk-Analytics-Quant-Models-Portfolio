@@ -8,4 +8,5 @@ Built ARCH and GARCH models,Compared model outputs and interpretations
 but can become unstable,GARCH models provide a more stable and realistic representation of volatility
 Model assumptions matter a lot when interpreting results.
 **Libraries Used** : Python,pandas, numpy,matplotlib / seaborn,statsmodels / arch
+**Second Model**- Crdit Risk Modelling-PD,LGD and EAD. 
 **Feedback** : If you have any suggestions, please feel free to share with me.
