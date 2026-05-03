@@ -6,7 +6,6 @@ This project implements a stochastic simulation to price European options for Ba
 *   **Stochastic Modeling:** Uses Geometric Brownian Motion (GBM) to simulate 50,000 potential price paths.
 *   **Volatility Estimation:** Implements the **Parkinson High-Low Estimator**for a more nuanced volatility measure than standard close-to-close returns.
 *   **Validation:** Benchmarks simulation results against the analytical **Black-Scholes-Merton**
-*   **Risk Metrics:** Calculates Standard Error and $95\%$ Confidence Intervals to ensure simulation convergence.
 ### 2. Credit Risk Modelling — PD, LGD, and EAD
 Builds a full credit risk pipeline using LendingClub loan data—the same framework banks use under **Basel II/III** and **IFRS 9**.
 *   **Credit Scorecard:** Developed using Weight of Evidence (WoE) and Information Value (IV).
@@ -23,7 +22,5 @@ Volatility modelling using Bank of Baroda stock data to address why standard reg
 *   **Environment:** All notebooks run on Jupyter or Google Colab.
 *   **Dependencies:** Each notebook has a setup cell at the top with necessary installs (e.g., `pip install arch` or `yfinance`).
 *   **Data:** Market data is fetched dynamically via APIs or provided within the repository structure.
-## 🎯 Who this is for
-*   **Finance Students & Risk Analysts:** 
 ## 💬 Feedback
 These projects are part of my continuous learning journey in quantitative finance. If you have any suggestions or technical questions, please feel free to share them with me!
