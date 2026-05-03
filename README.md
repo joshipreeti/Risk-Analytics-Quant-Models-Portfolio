@@ -2,9 +2,9 @@
 This repository is a collection of my work in risk analytics, covering market risk, credit risk, and derivative pricing. The focus of these projects is not just on model implementation, but on understanding how quantitative techniques translate into real-world risk management and regulatory frameworks.
 ## 📂 Projects Overview
 ### 1. Monte Carlo Option Pricing — Bank of Baroda Case Study
-This project implements a stochastic simulation to price European options for Bank of Baroda (BOB) using real-world NSE data[cite: 1].
+This project implements a stochastic simulation to price European options for Bank of Baroda (BOB) using real-world NSE data.
 *   **Stochastic Modeling:** Uses Geometric Brownian Motion (GBM) to simulate 50,000 potential price paths.
-*   **Volatility Estimation:** Implements the **Parkinson High-Low Estimator**for a more nuanced volatility measure than standard close-to-close returns[cite: 1].
+*   **Volatility Estimation:** Implements the **Parkinson High-Low Estimator**for a more nuanced volatility measure than standard close-to-close returns.
 *   **Validation:** Benchmarks simulation results against the analytical **Black-Scholes-Merton**
 *   **Risk Metrics:** Calculates Standard Error and $95\%$ Confidence Intervals to ensure simulation convergence.
 ### 2. Credit Risk Modelling — PD, LGD, and EAD
