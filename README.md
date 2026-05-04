@@ -23,4 +23,4 @@ Volatility modelling using Bank of Baroda stock data to address why standard reg
 *   **Dependencies:** Each notebook has a setup cell at the top with necessary installs (e.g., `pip install arch` or `yfinance`).
 *   **Data:** Market data is fetched dynamically via APIs or provided within the repository structure.
 ## 💬 Feedback
-These projects are part of my continuous learning journey in quantitative finance. If you have any suggestions or technical questions, please feel free to share them with me!
+ If you have any suggestions or technical questions, please feel free to share them with me!
