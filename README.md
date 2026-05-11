@@ -18,9 +18,9 @@ Volatility modelling using Bank of Baroda stock data to address why standard reg
 *   **ARCH Model:** Letting variance depend on past shocks (volatility clusters).
 *   **GARCH(1,1):** The industry standard for volatility forecasting, adding persistence to the model.
 *   **Market Context:** Forecasting and interpreting results within an active market environment.
-## 🛠️ How to Run
+##  How to Run
 *   **Environment:** All notebooks run on Jupyter or Google Colab.
 *   **Dependencies:** Each notebook has a setup cell at the top with necessary installs (e.g., `pip install arch` or `yfinance`).
 *   **Data:** Market data is fetched dynamically via APIs or provided within the repository structure.
-## 💬 Feedback
+##  Feedback
  If you have any suggestions or technical questions, please feel free to share them with me!
