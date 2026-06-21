@@ -1,8 +1,8 @@
 # Risk Analytics & Quantitative Models Portfolio
 
-A collection of quantitative risk projects covering market risk, credit risk,
-and derivative pricing — built on real NSE/LendingClub data with full
-regulatory framing (Basel II/III, FRTB, IFRS 9).
+A collection of quantitative finance, risk analytics, and machine learning projects spanning market risk, credit risk, derivative pricing, volatility forecasting, algorithmic trading, and regulatory capital frameworks.
+
+Projects are built using real market and credit datasets with practical applications to Basel II/III, FRTB, IFRS 9, quantitative research, and model risk management.
 
 ---
 
@@ -10,93 +10,253 @@ regulatory framing (Basel II/III, FRTB, IFRS 9).
 
 ### 1. Monte Carlo Option Pricing — Bank of Baroda Case Study
 
-Stochastic simulation framework to price European options on Bank of Baroda
-(BOB) using real NSE option chain data.
+Stochastic simulation framework to price European options on Bank of Baroda (BOB) using real NSE option chain data.
 
 - **GBM Simulation:** 100,000 paths under risk-neutral framework
-- **Volatility Calibration:** Implied volatility from market premiums vs
-  exchange-implied volatility
+- **Volatility Calibration:** Implied volatility from market premiums vs exchange-implied volatility
 - **Validation:** Monte Carlo results benchmarked against Black-Scholes-Merton
+- **Risk Analysis:** Sensitivity of option values to volatility assumptions and market conditions
 
 ---
 
 ### 2. Credit Risk Modelling — PD, LGD & EAD (LendingClub)
 
-Full credit risk pipeline using LendingClub loan data — the same framework
-used under Basel II/III and IFRS 9.
+Full credit risk pipeline using LendingClub loan data, aligned with Basel II/III and IFRS 9 frameworks.
 
-- **Credit Scorecard:** WoE + IV + Logistic Regression → points scale (CIBIL/FICO style)
-- **PD Model:** Logistic Regression · Decision Tree · XGBoost — evaluated on AUC & Gini
-- **LGD Model:** Linear Regression · Decision Tree · XGBoost — evaluated on RMSE & MAE
-- **EAD:** Outstanding principal + Credit Conversion Factor (CCF)
-- **Expected Loss:** EL = PD × LGD × EAD → portfolio EL ~$55.9M (14.7% of EAD)
-- **Model Selection:** XGBoost marginally outperforms; Logistic Regression
-  recommended for production (interpretable + regulator-friendly)
+#### Probability of Default (PD)
+
+- Credit Scorecard using WoE + IV + Logistic Regression
+- Logistic Regression, Decision Tree, and XGBoost comparison
+- Performance evaluated using AUC and Gini
+
+#### Loss Given Default (LGD)
+
+- Linear Regression
+- Decision Tree Regressor
+- XGBoost Regressor
+- Evaluated using RMSE and MAE
+
+#### Exposure at Default (EAD)
+
+- Outstanding Principal
+- Credit Conversion Factor (CCF)
+
+#### Expected Loss Framework
+
+**EL = PD × LGD × EAD**
+
+Key Findings:
+
+- Portfolio Expected Loss ≈ $55.9M
+- EL represents approximately 14.7% of total EAD
+- XGBoost achieved the strongest predictive performance
+- Logistic Regression recommended for production deployment due to interpretability and regulatory acceptance
 
 ---
 
 ### 3. Volatility Modelling — ARCH & GARCH (Bank of Baroda)
 
-Volatility modelling on BANKBARODA.NS — from stylised facts to asymmetric models.
+Volatility forecasting project on BANKBARODA.NS using classical econometric models.
 
-- **Stylised Facts:** Fat tails, volatility clustering, heteroskedasticity
-- **ARCH(5):** Short-memory variance from past 5 squared shocks
-- **GARCH(1,1):** Industry standard — adds persistence (β) for long memory
-- **GJR-GARCH(1,1):** Tests leverage effect (γ) — found insignificant for BOB
-  (documented transparently, not suppressed)
-- **Validation:** GARCH forecast (1.88%/day) vs actual May 2026 realised
-  volatility and live NSE ATM IV (24.10%)
+#### Models Implemented
+
+- ARCH(5)
+- GARCH(1,1)
+- GJR-GARCH(1,1)
+
+#### Key Findings
+
+- Evidence of volatility clustering
+- Fat-tailed return distributions
+- Persistent volatility dynamics captured effectively by GARCH
+- Leverage effect tested via GJR-GARCH and found statistically insignificant
+
+#### Validation
+
+- Forecast volatility compared against:
+  - Realized volatility
+  - NSE ATM implied volatility
+  - Live market conditions
 
 ---
 
 ### 4. Market Risk Capital — FRTB IMA & SA | Bank of Baroda Case Study
 
-Two-part series implementing the full FRTB market risk capital framework
-on a ₹1 Crore BOB equity position using real NSE data (2022–2025).
+Comprehensive implementation of the Basel FRTB market risk framework using real NSE market data.
 
 #### Part 1: Internal Models Approach (IMA)
-*Value-at-Risk, Expected Shortfall & Stressed Capital*
 
-- **Historical VaR:** Non-parametric — VaR 99% = 5.04%, ES 97.5% = 6.05%
-- **Parametric VaR:** Variance-Covariance — confirms fat tails
-  (Historical > Parametric)
-- **Monte Carlo VaR:** GBM, 50,000 paths — VaR 99% = 5.00%
-- **FRTB Liquidity Scaling:** ES scaled to 10-day horizon (√10 rule) —
-  FRTB ES capital 20% higher than Basel III VaR capital
-- **Backtesting:** Rolling 250-day window — 7 exceptions at 99% →
-  Basel Yellow Zone
-- **Stressed VaR:** Worst 252-day window (Jan 2022–Feb 2023) —
-  SVaR = 1.45× current VaR
-- **Regulatory Capital:** Basel III (VaR + SVaR) vs FRTB ES across holding horizons
+##### Value-at-Risk & Expected Shortfall
+
+- Historical VaR (99%)
+- Parametric VaR
+- Monte Carlo VaR (50,000 simulations)
+- Expected Shortfall (97.5%)
+
+##### FRTB Enhancements
+
+- Liquidity Horizon Scaling
+- Stressed VaR
+- Regulatory Capital Computation
+- Basel Traffic-Light Backtesting
+
+##### Key Findings
+
+- Historical VaR exceeded Parametric VaR, confirming fat tails
+- FRTB ES capital approximately 20% higher than Basel III VaR capital
+- Backtesting produced 7 exceptions → Basel Yellow Zone
 
 #### Part 2: Standardised Approach (SA)
-*Sensitivity-Based Method, DRC, RRAO & Output Floor*
 
-Hypothetical trading book: BOB Equity (₹1Cr) · USD/INR FX (₹50L) ·
-Crude Oil Futures (₹25L) · 10Y G-Sec (₹75L)
+##### Sensitivity-Based Method (SBM)
 
-- **SBM — Equity:** Delta (RW 55%) + Vega (Black-Scholes, 5% vol shock)
-- **SBM — FX:** Flat RW 15% on net open position (non-specified pair)
-- **SBM — Commodity:** Bucket 2 Crude Oil, RW 35% (BCBS d457, Table 1)
-- **SBM — GIRR:** DV01-based, 10Y tenor, RW 1.15%
-- **DRC:** Jump-to-default — 15% × 100% LGD × ₹1Cr equity;
-  G-Sec exempt (sovereign, domestic currency)
-- **RRAO:** 0.1% on hypothetical vanilla call notional (linear positions excluded)
-- **Output Floor:** Final Capital = max(IMA ₹28.7L, 72.5% × SA ₹87.8L)
-  → **SA Floor binding at ₹63.7L**
+- Equity Risk
+- FX Risk
+- Commodity Risk
+- General Interest Rate Risk (GIRR)
+
+##### Additional Components
+
+- Default Risk Charge (DRC)
+- Residual Risk Add-On (RRAO)
+- Output Floor
+
+##### Portfolio
+
+- Bank of Baroda Equity
+- USD/INR FX Position
+- Crude Oil Futures
+- 10-Year Government Bond
+
+##### Key Finding
+
+Output Floor became binding:
+
+**Final Capital = max(IMA Capital, 72.5% × SA Capital)**
+
+Result:
+
+- IMA Capital = ₹28.7 Lakhs
+- SA Capital = ₹87.8 Lakhs
+- Final Capital = ₹63.7 Lakhs
+
+---
+
+### 5. Can Machine Learning Beat Buy-and-Hold?
+#### A Cost-Aware XGBoost Backtest on Bank of Baroda
+
+A quantitative research project investigating whether machine learning can generate economically meaningful trading profits after accounting for transaction costs and real-world market frictions.
+
+> Can a predictive model outperform a passive buy-and-hold strategy once realistic trading costs are considered?
+
+#### Data
+
+- BANKBARODA.NS
+- Daily historical price data
+- Yahoo Finance
+
+#### Feature Engineering
+
+32 market features including:
+
+- Momentum Indicators
+- RSI
+- MACD
+- Bollinger Bands
+- Moving Average Signals
+- Volatility Features
+- Volume-Based Indicators
+
+#### Leakage-Free Feature Selection
+
+Feature selection performed exclusively on training data using:
+
+- Variance Threshold Filtering
+- Correlation Filtering
+- Mutual Information Selection
+- Recursive Feature Elimination (RFE)
+
+#### Model
+
+- XGBoost Classifier
+- Time-series-aware train/test split
+- Hyperparameter tuning
+- Probability-based trading signals
+
+#### Validation Framework
+
+- Out-of-Sample Testing
+- Walk-Forward Validation
+- Cost-Aware Backtesting
+
+#### Trading Framework
+
+- Dead-Zone Threshold
+- Transaction Cost Modelling
+- Position-Based Returns
+- Strategy Equity Curve
+
+#### Results
+
+| Metric | Result |
+|----------|----------|
+| Test AUC | 0.595 |
+| Walk-Forward AUC | 0.511 |
+| Buy & Hold Return | +36% |
+| ML Strategy Return | Negative |
+
+#### Key Finding
+
+Although the model demonstrated predictive power above random guessing, the edge was insufficient to overcome:
+
+- Transaction Costs
+- Trading Turnover
+- Market Noise
+- Regime Instability
+
+This project highlights a crucial lesson in quantitative finance:
+
+### Statistical Significance ≠ Economic Significance
+
+A model can be predictive without being profitable.
 
 ---
 
 ## 🛠️ Tech Stack
 
-`Python` · `NumPy` · `Pandas` · `yFinance` · `SciPy` · `Matplotlib` ·
-`scikit-learn` · `XGBoost` · `arch`
+`Python` · `NumPy` · `Pandas` · `SciPy` · `Matplotlib` · `scikit-learn` · `XGBoost` · `arch` · `yFinance`
+
+---
+
+## 📚 Regulatory Frameworks Referenced
+
+- Basel II
+- Basel III
+- FRTB (BCBS d457)
+- IFRS 9
+- Market Risk Capital Frameworks
+- Credit Risk Modelling Standards
 
 ---
 
 ## 📌 Notes
 
-- All position sizes are hypothetical — used solely for educational purposes
-- Risk weights and regulatory parameters follow BCBS d457 (FRTB SA) and
-  Basel II/III frameworks
-- Real market data used throughout (NSE/LendingClub) — no synthetic datasets
+- Real market and credit datasets used throughout
+- No synthetic datasets used for final analyses
+- Position sizes are hypothetical and used solely for educational purposes
+- Regulatory parameters follow publicly available Basel/FRTB guidance
+- Projects are intended for quantitative research, risk analytics, and educational purposes
+
+---
+
+## 🎯 Areas of Interest
+
+- Quantitative Risk Management
+- Market Risk
+- Credit Risk
+- Derivative Pricing
+- Regulatory Capital
+- Volatility Forecasting
+- Machine Learning in Finance
+- Quantitative Research
+- Financial Engineering
