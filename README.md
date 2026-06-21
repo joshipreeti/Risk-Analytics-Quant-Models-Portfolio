@@ -196,15 +196,6 @@ Feature selection performed exclusively on training data using:
 - Position-Based Returns
 - Strategy Equity Curve
 
-#### Results
-
-| Metric | Result |
-|----------|----------|
-| Test AUC | 0.595 |
-| Walk-Forward AUC | 0.511 |
-| Buy & Hold Return | +36% |
-| ML Strategy Return | Negative |
-
 #### Key Finding
 
 Although the model demonstrated predictive power above random guessing, the edge was insufficient to overcome:
