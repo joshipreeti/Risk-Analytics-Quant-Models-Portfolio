@@ -1,4 +1,4 @@
-# Risk Analytics & Quantitative Models Portfolio
+# Risk Analytics & Quantitative Models Portfolio #
 
 A collection of quantitative finance, risk analytics, and machine learning projects spanning market risk, credit risk, derivative pricing, volatility forecasting, algorithmic trading, and regulatory capital frameworks.
 
