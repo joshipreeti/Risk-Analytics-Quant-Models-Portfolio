@@ -230,7 +230,7 @@ A model can be predictive without being profitable.
 
 ---
 
-## 📌 Notes
+## 📌 Notes ##
 
 - Real market and credit datasets used throughout
 - No synthetic datasets used for final analyses
